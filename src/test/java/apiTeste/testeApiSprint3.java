@@ -101,13 +101,21 @@ public class testeApiSprint3 {
     @ParameterizedTest
     @CsvFileSource(resources = "csv/massaUser2.csv", numLinesToSkip = 1, delimiter = ',')
     public void testarIncluirUserCSV(
-            String firstName,
-            String lastName,
+            String firstname,
+            String lastname,
+            String totalprice,
+            String depositpaid,
+            String chekin,
+            String checkout,
             String additionalneeds
             ){
         User user = new User();
-        user.firstName = firstName;
-        user.lastName = lastName;
+        user.firstname = firstname;
+        user.lastname = lastname;
+        user.totalprice = totalprice;
+        user.depositpaid = depositpaid;
+        user.checkin = chekin;
+        user.checkout = checkout;
         user.additionalneeds = additionalneeds;
         Gson gson = new Gson();
         String jsonBody = gson.toJson(user);
@@ -122,7 +130,12 @@ public class testeApiSprint3 {
                         .statusCode(200)
                         .body("booking.firstname", is("Jose"))
                         .body("booking.lastname", is("Artigas"))
+                        .body("booking.totalprice", is(100))
+                        .body("booking.depositpaid", is(true))
+                        .body("booking.bookingdates.checkin", is("2023-01-01"))
+                        .body("booking.bookingdates.checkout", is("2023-02-01"))
                         .body("booking.additionalneeds", is("Breakfast"))
+
 
                 ;
     }
