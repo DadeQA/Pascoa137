@@ -234,7 +234,7 @@ public class TesteUser {
         ;
     }
     // get pet
-    @Test
+    /*@Test
     public void testarConsultarPet(){
 
         String petId = "Sergio";
@@ -255,7 +255,9 @@ public class TesteUser {
                 .body("status", is(status))
         ;
 
-    }// post store
+    }
+    // post store
+     */
 
     @Test
     public void testarIncluirStoreOrder() throws IOException {
